@@ -57,9 +57,9 @@ class MyHomePage extends StatelessWidget {
     MyHomePage({Key? key}) : super(key: key);
 
 final List<ShopItem> items = [
-  ShopItem("Lihat Item", Icons.checklist, const Color(0xFF74C69D)),
-  ShopItem("Tambah Item", Icons.add_shopping_cart, const Color(0xFF52B788)),
-  ShopItem("Logout", Icons.logout, const Color(0xFF40916C)),
+  ShopItem("Lihat Item", Icons.checklist, const Color(0xFF52b788)),
+  ShopItem("Tambah Item", Icons.add_shopping_cart, const Color(0xFF40916c)),
+  ShopItem("Logout", Icons.logout, const Color(0xFF2d6a4f)),
 ];
 
     @override
@@ -67,10 +67,10 @@ final List<ShopItem> items = [
         return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Astana',
+          'Goods Gallery',
         ),
-        backgroundColor: Colors.indigo,
-        foregroundColor: Colors.white,
+        backgroundColor: const Color(0xFFd8f3dc),
+        foregroundColor: Color(0xFF1b4332),
       ),
       body: SingleChildScrollView(
         // Widget wrapper yang dapat discroll
