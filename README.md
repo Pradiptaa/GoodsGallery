@@ -2,7 +2,12 @@
 ---
 ## Pradipta Arya Pramudita - 2206083685
 ---
+
+<details>
+<summary>
+
 ## ---Tugas 7---
+</summary>
 ---
 ### Apa perbedaan utama antara stateless dan stateful widget dalam konteks pengembangan aplikasi Flutter?
 ---
@@ -31,6 +36,16 @@ Stateful widget adalah widget yang dapat memiliki state internal dan dapat melak
 Dimulai dengan membuat direktori baru dengan nama project yang diinginkan, lalu generate project flutter pada direktori tersebut. Dilanjut dengan memodifikasi file main.dart yang sudah ter-generate dengan import baru dan menghapus sebagian kode. Buat file baru bernama menu.dart pada folder yang sama dengan main.dart. Lalu import dari file main.dart.
 <br>
 Dilanjut dengan membuat stateless widget pada main.dart, dan membuat class yang extend stateless widget pada file menu.dart. Lengkapi file menu.dart dengan class yang diperlukan dan hal terakhir yang dilakukan adalah run project.
+
+---
+
+</details>
+<details>
+<summary>
+
+## ---Tugas 8---
+
+</summary>
 
 ---
 ###  Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
@@ -69,11 +84,69 @@ Navigator.pushReplacement(
 ---
 ###  Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!
 ---
+* <strong>TextFormField untuk Nama: </strong> Digunakan untuk memasukkan nama item.
+~~~
+TextFormField(
+    decoration: InputDecoration(
+        hintText: "Nama Produk",
+        labelText: "Nama Produk",
+        border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5.0),
+        ),
+    ),
+    onChanged: (String? value) {
+        setState(() {
+        _name = value!;
+        });
+    },
+    validator: (String? value) {
+        if (value == null || value.isEmpty) {
+        return "Nama tidak boleh kosong!";
+        }
+        return null;
+    },
+),
+~~~
+* <strong>TextFormField untuk Harga: </strong> Digunakan untuk user input harga item.
+~~~
+TextFormField(
+    decoration: InputDecoration(
+        hintText: "Harga",
+        labelText: "Harga",
+        border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5.0),
+        ),
+    ),
+    onChanged: (String? value) {
+        setState(() {
+        _price = int.parse(value!);
+        });
+    },
+    validator: (String? value) {
+        if (value == null || value.isEmpty) {
+        return "Harga tidak boleh kosong!";
+        }
+        if (int.tryParse(value) == null) {
+        return "Harga harus berupa angka!";
+        }
+        return null;
+    },
+),
+~~~
+* 3. <strong>TextFormField untuk Deskripsi Item: </strong> user dapat menulis deskripsi tentang item menggunakan TextField.
+
 
 ---
 ###  Bagaimana penerapan clean architecture pada aplikasi Flutter?
 ---
+Penerapan Clean Architecture dalam pengembangan aplikasi Flutter melibatkan pemisahan kode menjadi lapisan yang berbeda dengan tanggung jawab yang jelas, memungkinkan pengembangan yang lebih modular, mudah diuji, dan mudah dipelihara. Berikut adalah penerapan Clean Architecture dalam Flutter:
+* <strong>Presentation Layer: </strong> Berisi widget/screens dan Bloc untuk mengelola UI dan menampilkan data ke pengguna serta menangani interaksi pengguna.
+* <strong>Domain Layer: </strong> Berisi entities, interactors, dan repository interfaces. Yang berguna untuk menyimpan aturan, validasi, dan definisi entitas.
+* <strong>Data Layer: </strong> Berisi models, data sources, dan repository implementation. Yang berguna untuk mengelola akses data dan mengonversi data.
 
 ---
 ###  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
 ---
+Dimulai dengan membuat folder baru pada lib yaitu screens dan widgets untuk merapikan manajemen file, dilanjut dengan membuat file shoplist_form.dart untuk form yang menerima input user. Lalu membuat kode untuk memvalidasi input dari user dengan ketentuan setiap input tidak boleh kosong dan harus sesuai dengan tipe data atribut modelnya. <br> 
+Kemudian membuat drawer dan menghubungkan opsi tambah item yang berada pada drawer dan halaman utama ke shoplist_form.dart. Diakhiri dengan menghubungkan pada halaman utama. 
+</details>

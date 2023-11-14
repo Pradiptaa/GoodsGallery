@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goodsgallery/widgets/left_drawer.dart';
+import 'package:goodsgallery/models/product.dart';
 
 class ShopFormPage extends StatefulWidget {
   const ShopFormPage({super.key});
@@ -8,11 +9,53 @@ class ShopFormPage extends StatefulWidget {
   State<ShopFormPage> createState() => _ShopFormPageState();
 }
 
+List<Product> productList = [];
+
 class _ShopFormPageState extends State<ShopFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _name = "";
   int _price = 0;
   String _description = "";
+
+    void _saveProduct() {
+    if (_formKey.currentState!.validate()) {
+      // Add product to the global list
+      productList.add(Product(
+        name: _name,
+        price: _price,
+        description: _description,
+      ));
+
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Produk berhasil tersimpan'),
+            content: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Nama: $_name'),
+                  Text('Harga: $_price'),
+                  Text('Deskripsi: $_description'),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        },
+      );
+
+      _formKey.currentState!.reset();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,36 +155,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.indigo),
                   ),
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: const Text('Produk berhasil tersimpan'),
-                            content: SingleChildScrollView(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Nama: $_name'),
-                                  Text('Price: $_price'),
-                                  Text('Description: $_description')
-                                ],
-                              ),
-                            ),
-                            actions: [
-                              TextButton(
-                                child: const Text('OK'),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                              )
-                            ],
-                          );
-                        }
-                      );
-                    }
-                  },
+                  onPressed: _saveProduct,
                   child: const Text(
                     "Save",
                     style: TextStyle(color: Colors.white),
