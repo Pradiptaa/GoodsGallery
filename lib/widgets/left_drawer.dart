@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goodsgallery/screens/menu.dart';
 import 'package:goodsgallery/screens/shoplist_form.dart';
-import 'package:goodsgallery/screens/see_product.dart';
+import 'package:goodsgallery/screens/list_product.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -57,21 +57,20 @@ class LeftDrawer extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ShopFormPage(),
+                    builder: (context) => const ShopFormPage(),
                   ));
             },
           ),
           ListTile(
-            leading: const Icon(Icons.movie),
-            title: const Text('Lihat Produk'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        ProductListPage(products: productList)),
-              );
-            },
+              leading: const Icon(Icons.shopping_basket),
+              title: const Text('Daftar Produk'),
+              onTap: () {
+                  // Route menu ke halaman produk
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProductPage()),
+                  );
+              },
           ),
         ],
       ),

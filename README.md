@@ -133,7 +133,7 @@ TextFormField(
     },
 ),
 ~~~
-* 3. <strong>TextFormField untuk Deskripsi Item: </strong> user dapat menulis deskripsi tentang item menggunakan TextField.
+* <strong>TextFormField untuk Deskripsi Item: </strong> user dapat menulis deskripsi tentang item menggunakan TextField.
 
 
 ---
@@ -149,4 +149,46 @@ Penerapan Clean Architecture dalam pengembangan aplikasi Flutter melibatkan pemi
 ---
 Dimulai dengan membuat folder baru pada lib yaitu screens dan widgets untuk merapikan manajemen file, dilanjut dengan membuat file shoplist_form.dart untuk form yang menerima input user. Lalu membuat kode untuk memvalidasi input dari user dengan ketentuan setiap input tidak boleh kosong dan harus sesuai dengan tipe data atribut modelnya. <br> 
 Kemudian membuat drawer dan menghubungkan opsi tambah item yang berada pada drawer dan halaman utama ke shoplist_form.dart. Diakhiri dengan menghubungkan pada halaman utama. 
+</details>
+
+<details>
+<summary>
+
+## ---Tugas 9---
+---
+</summary>
+
+### Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+---
+Ya, pengambilan data JSON bisa dilakukan tanpa membuat model terlebih dahulu. Dapat menggunakan struktur data umum, ataupun library eksternal. Pengambilan data JSON tanpa model tergolong lebih fleksibel dan cepat. Namun, penggunaan model dapat memudahkan pemeliharaan kode, memudahkan validasi data, dan membuatnya bisa digunakan kembali di berbagai bagian aplikasi. Sehingga penggunaan model lebih baik daripada tidak menggunakan model.
+
+---
+### Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+---
+<strong>CookieRequest</strong> berfungsi untuk mengelola Cookie seperti token authentication, pengiriman dan penerimaan Cookie, dan memastikan bahwa Cookie disimpan dan di transmisikan dengan aman. <br>
+<strong>CookieRequest</strong> perlu dibagikan ke semua komponen di aplikasi Flutter karena untuk memastikan konsistensi data, memudahkan pengelolaan cookie dari satu tempat, memungkinkan pengelolaan keamanan cookie secara terpusat, dan menjaga efisiensi.
+
+---
+### Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+---
+Mekanisme pengambilan data dari JSON dimulai dari permintaan HTTP, lalu dilanjutkan dengan pengolahan respons HTTP, kemudian data JSON yang diterima akan diubah dari string menjadi struktur data yang bisa diolah oleh Flutter. Setelah parsing data dilakukan, data tersebut bisa digunakan untuk membangun widget pada Flutter, dan juga dilakukan pengelolaan State dan Error agar dapat menangani data.
+
+---
+### Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+---
+* <strong>Scaffold:</strong> Untuk membuat struktur dasar tampilan aplikasi.
+* <strong>ListView.builder:</strong> Untuk membuat daftar dinamis
+* <strong>TextFormField:</strong> Untuk mengumpulkan input teks dari user.
+* <strong>ElevatedButton: </strong> Untuk tombol aksi.
+* <strong>FutureBuilder: </strong> Untuk membangun UI berdasarkan hasil interaksi dengan Future.
+
+---
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+---
+<strong>Implementasi Pada Aplikasi Django</strong><br> Dimulai dengan membuat django app baru bernama authentication, kemudian install django-cors-headers, dan memodifikasi setting dengan menambahkan authentication dan corsheaders pada INSTALLED_APPS, corsheaders.middleware.CorsMiddleware pada middleware, dan menambahkan beberapa variabel baru. Membuat views dan urls baru untuk login pada authentication, dan menambahkan path baru pada urls project. <br>
+Setelah melakukan beberapa hal pada project Flutter, diperlukan integrasi form Flutter dengan Django, sehingga fungsi view dan urls baru akan ditambahkan ke views.py dan urls.py pada aplikasi main. Lalu untuk implementasi Logout, tambahkan views dan urls baru pada aplikasi authentication.
+<strong>Implementasi Pada Aplikasi Flutter</strong><br> Dimulai dengan install package baru bernama provider dan pbp_django_auth. Lalu mengubah StatelessWidget untuk menyediakan CookieRequest dengan menggunakan Provider, Lalu membuat file bernama login.dart pada folder screens dan mengisinya dengan ketentuan login, dan mengubah main.dart widget MaterialApp sehingga menunjukkan LoginPage.<br> 
+Dilanjut dengan mengambil data JSON dari project Django dan menggunakan untuk diubah menjadi language dart. Lalu dilanjut dengan install package http untuk melakukan perintah http request. Dilanjut dengan memodifikasi android/app/src/main/AndroidManifest.xml, untuk memperbolehkan akses internet pada aplikasi Flutter. <br>
+Dilanjutkan dengan membuat file list_product.dart pada folder screens dan setelah selesai, list_product.dart ditambahkan ke widget/left_drawer.dart, dan juga mengubah fungsi tombol "Lihat Produk" dan import file-file yang dibutuhkan. Kemudian hubungkan halaman shoplist_form.dart dengan CookieRequest. Untuk implementasi logout, tambahkan kode untuk CookieRequest dan else if baru sehingga logout berfungsi dengan baik.
+
 </details>

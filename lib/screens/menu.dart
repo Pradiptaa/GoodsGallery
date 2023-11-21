@@ -1,15 +1,14 @@
 import 'package:goodsgallery/widgets/left_drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:goodsgallery/screens/shoplist_form.dart';
 import 'package:goodsgallery/widgets/shop_card.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
 
   final List<ShopItem> items = [
-    ShopItem("Lihat Produk", Icons.checklist),
-    ShopItem("Tambah Produk", Icons.add_shopping_cart),
-    ShopItem("Logout", Icons.logout),
+    ShopItem("Lihat Produk", Icons.checklist, const Color(0xFF52b788)),
+    ShopItem("Tambah Produk", Icons.add_shopping_cart, const Color(0xFF40916c)),
+    ShopItem("Logout", Icons.logout, const Color(0xFF2d6a4f)),
   ];
 
   @override
@@ -19,8 +18,8 @@ class MyHomePage extends StatelessWidget {
         title: const Text(
             'GoodsGallery',
           ),
-          backgroundColor: const Color(0xFFd8f3dc),
-          foregroundColor: const Color(0xFF1b4332),
+          backgroundColor: Colors.indigo,
+          foregroundColor: Colors.white,
         ),
           // Masukkan drawer sebagai parameter nilai drawer dari widget Scaffold
           drawer: const LeftDrawer(),
